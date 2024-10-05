@@ -9,7 +9,7 @@ const displayCategory = (categories) => {
   categories.forEach((item) => {
     const buttonContainer = document.createElement("div");
     buttonContainer.innerHTML = `
-      <button id="btn-${item.category_id}" class= "category-btn flex items-center   gap-2 font-bold text-2xl border-2 rounded-lg px-6 py-2"><img src=${item.category_icon}/>${item.category}</button>
+      <button id="btn-${item.petId}" onclick= "loadCategoryPets('${item.category}')" class= "category-btn flex items-center   gap-2 font-bold text-2xl border-2 rounded-lg px-6 py-2"><img src=${item.category_icon}/>${item.category}</button>
       `;
     categoryContainer.append(buttonContainer);
   });
@@ -24,9 +24,9 @@ const loadPost = () => {
 };
 const displayPost = (pets) => {
   const petsContainer = document.getElementById("pets-content");
+  petsContainer.innerHTML = "";
   pets.forEach((pet) => {
     const petCard = document.createElement("div");
-    petCard.className = "card";
     petCard.innerHTML = `
         <div class="card bg-base-100 w-96 shadow-xl">
                 <figure class="px-10 pt-10 h-[200px] relative">
@@ -55,6 +55,15 @@ const displayPost = (pets) => {
   });
 };
 
+const loadCategoryPets = (category) => {
+  fetch(
+    `https://openapi.programming-hero.com/api/peddy/category/${category}`
+  )
+    .then((res) => res.json())
+    .then((data) => {
+      displayPost(data.data);
+    });
+};
 
 loadCategory();
 loadPost();
