@@ -25,11 +25,24 @@ const loadPost = () => {
 const displayPost = (pets) => {
   const petsContainer = document.getElementById("pets-content");
   petsContainer.innerHTML = "";
+  if (pets.length == 0) {
+    petsContainer.classList.remove("grid","grid-cols-12");
+    petsContainer.innerHTML = `
+    <div class= "flex flex-col gap-5 justify-center items-center">
+      <img src="./images/error.webp" alt="" />
+      <h1 class="text-center text4xl font-bold">NO Content here in this category</h1>
+    </div>
+    `;
+    return;
+  } else {
+    petsContainer.classList.add("grid","grid-cols-12");
+  }
   pets.forEach((pet) => {
     const petCard = document.createElement("div");
+    petCard.className="col-span-4 gap-4"
     petCard.innerHTML = `
-        <div class="card bg-base-100 w-96 shadow-xl">
-                <figure class="px-10 pt-10 h-[200px] relative">
+        <div class="card bg-base-100 shadow-xl">
+                <figure class="px-6 pt-6 h-[200px] relative">
                     <img class="h-full w-full rounded-xl object-cover"
                         src=${pet.image}
                         />
@@ -41,7 +54,7 @@ const displayPost = (pets) => {
                         <p>Gender: ${pet.gender}</p>
                         <p>Price : ${pet.price}</p>
                         <div class="card-actions justify-between">
-                            <button class="btn"><i class="fa-regular fa-thumbs-up">
+                            <button class="btn" onclick="markAsImg('${pet.image}')"><i class="fa-regular fa-thumbs-up">
                             </i></button>
                             <button class="btn text-color font-extrabold
                             ">Adopt</button>
@@ -63,6 +76,22 @@ const loadCategoryPets = (category) => {
     .then((data) => {
       displayPost(data.data);
     });
+};
+
+const markAsImg = (image) => {
+  const markAsImages = document.getElementById("markAsImg");
+  const div = document.createElement("div");
+  div.classList=""
+  div.innerHTML = `
+    <div class="flex p-2 lg:p-3 bg-white rounded-2xl gap-3">
+            <figure class="px-2 py-2 h-[100px] relative shadow justify-center items-center">
+                    <img class="h-full w-full rounded-xl object-cover"
+                        src=${image}
+                        />
+              </figure>
+    </div>
+    `
+    markAsImages.appendChild(div)
 };
 
 loadCategory();
