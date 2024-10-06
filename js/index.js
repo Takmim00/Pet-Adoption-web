@@ -14,6 +14,30 @@ const displayCategory = (categories) => {
     categoryContainer.append(buttonContainer);
   });
 };
+const loadDetail = async(petId) => {
+  console.log(petId);
+  const url = `https://openapi.programming-hero.com/api/peddy/pet/${petId}`;
+  const res = await fetch(url);
+  const data = await res.json();
+  displayDetail(data.petData);
+};
+
+const displayDetail = (petData) => {
+  console.log(petData);
+  const detailContainer = document.getElementById("modal-content");
+  detailContainer.className="space-y-2"
+  detailContainer.innerHTML = `
+    <img class="w-full rounded-xl" src=${petData.image} alt="" />
+    <h2 class="card-title">${petData.pet_name}</h2>
+    <p>Birth: ${petData.date_of_birth}</p>
+    <p>Gender: ${petData.gender}</p>
+    <p>Price : ${petData.price}</p>
+    <p>Breed: ${petData.breed}</p>
+    <h1 class="card-title">Details Information</h1>
+    <p>${petData.pet_details}</p>
+  `;
+  document.getElementById("customModal").showModal();
+};
 
 // display post
 
@@ -26,7 +50,7 @@ const displayPost = (pets) => {
   const petsContainer = document.getElementById("pets-content");
   petsContainer.innerHTML = "";
   if (pets.length == 0) {
-    petsContainer.classList.remove("grid","grid-cols-12");
+    petsContainer.classList.remove("grid", "grid-cols-12");
     petsContainer.innerHTML = `
     <div class= "flex flex-col gap-5 justify-center items-center">
       <img src="./images/error.webp" alt="" />
@@ -35,11 +59,11 @@ const displayPost = (pets) => {
     `;
     return;
   } else {
-    petsContainer.classList.add("grid","grid-cols-12");
+    petsContainer.classList.add("grid", "grid-cols-12");
   }
   pets.forEach((pet) => {
     const petCard = document.createElement("div");
-    petCard.className="col-span-4 gap-4"
+    petCard.className = "lg:col-span-4 col-span-12 gap-4";
     petCard.innerHTML = `
         <div class="card bg-base-100 shadow-xl">
                 <figure class="px-6 pt-6 h-[200px] relative">
@@ -58,7 +82,7 @@ const displayPost = (pets) => {
                             </i></button>
                             <button class="btn text-color font-extrabold
                             ">Adopt</button>
-                            <button class="btn text-color font-extrabold
+                            <button onclick="loadDetail(${pet.petId})" class="btn text-color font-extrabold
                             ">Details</button>
                         </div>
                     </div>
@@ -69,19 +93,19 @@ const displayPost = (pets) => {
 };
 
 const loadCategoryPets = (category) => {
-  fetch(
-    `https://openapi.programming-hero.com/api/peddy/category/${category}`
-  )
+  fetch(`https://openapi.programming-hero.com/api/peddy/category/${category}`)
     .then((res) => res.json())
     .then((data) => {
       displayPost(data.data);
     });
 };
 
+
+
 const markAsImg = (image) => {
   const markAsImages = document.getElementById("markAsImg");
   const div = document.createElement("div");
-  div.classList=""
+  div.classList = "";
   div.innerHTML = `
     <div class="flex p-2 lg:p-3 bg-white rounded-2xl gap-3">
             <figure class="px-2 py-2 h-[100px] relative shadow justify-center items-center">
@@ -90,9 +114,10 @@ const markAsImg = (image) => {
                         />
               </figure>
     </div>
-    `
-    markAsImages.appendChild(div)
+    `;
+  markAsImages.appendChild(div);
 };
 
 loadCategory();
 loadPost();
+
