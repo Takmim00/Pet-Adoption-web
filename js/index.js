@@ -28,7 +28,7 @@ const loadDetail = async (petId) => {
 const displayDetail = (petData) => {
   console.log(petData);
   const detailContainer = document.getElementById("modal-content");
-  detailContainer.className = "space-y-2";
+  detailContainer.classList = "space-y-2";
   detailContainer.innerHTML = `
     <img class="w-full rounded-xl" src=${petData.image} alt="" />
     <h2 class="card-title">${petData.pet_name}</h2>
@@ -60,7 +60,7 @@ const displayPost = (pets) => {
   if (pets.length == 0) {
     petsContainer.classList.remove("grid");
     petsContainer.innerHTML = `
-    <div class= "flex flex-col gap-5 justify-center items-center w-full">
+    <div class= "flex flex-col gap-5 justify-center items-center bg-[#13131308] py-32 px-80 rounded-xl w-full">
       <img src="./images/error.webp" class="flex " alt="" />
       <h1 class="text-center text4xl font-bold">NO Content here in this category</h1>
     </div>
@@ -71,7 +71,7 @@ const displayPost = (pets) => {
   }
   pets.forEach((pet) => {
     const petCard = document.createElement("div");
-    petCard.className = "lg:col-span-4 col-span-12 gap-4";
+    petCard.classList = "lg:col-span-4 col-span-12 gap-4";
     petCard.innerHTML = `
         <div class="card bg-base-100 shadow-xl">
                 <figure class="px-6 pt-6 h-[200px] relative">
