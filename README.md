@@ -12,5 +12,5 @@
   <p>1.Arrow Function</p>
   <p>2.async/await</p>
   <p>3.Template literals</p>
-  <p>4.Promise.All</p>()
+  <p>4.Promise.All()</p>
   <p>5.const and let declaration</p>
