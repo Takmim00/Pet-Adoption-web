@@ -110,27 +110,33 @@ const removeActiveClass = () => {
   }
 };
 
-const loadAllPets = () => {
-  const spinner = document.getElementById("spinner");
-  spinner.classList.add("hidden");
-};
+
 
 const loadCategoryPets = (id) => {
   removeActiveClass();
-  fetch(`https://openapi.programming-hero.com/api/peddy/category/${id}`)
+
+  const spinner = document.getElementById("spinner");
+  const petsContainer = document.getElementById("pets-content");
+  spinner.classList.remove("hidden");
+  petsContainer.classList.add("hidden");
+
+  const timeout = new Promise((resolve) => {
+    setTimeout(resolve, 2000);
+  });
+  const fetches= fetch(`https://openapi.programming-hero.com/api/peddy/category/${id}`)
     .then((res) => res.json())
     .then((data) => {
       const activeBtn = document.getElementById(`btn-${id}`);
       activeBtn.classList.add("active");
       activeCategoryPets = data.data;
-      displayPost(activeCategoryPets);
     });
-  const spinner = document.getElementById("spinner");
-  spinner.classList.remove("hidden");
-  setTimeout(function () {
-    loadAllPets();
-  }, 3000);
+  Promise.all([fetches, timeout]).then(() => {
+    spinner.classList.add("hidden");
+    petsContainer.classList.remove("hidden");
+    displayPost(activeCategoryPets);
+  });   
 };
+
 
 const sortByPrice = (pets) => {
   return pets.sort((a, b) => b.price - a.price);
