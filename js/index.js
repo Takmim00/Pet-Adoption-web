@@ -32,10 +32,10 @@ const displayDetail = (petData) => {
   detailContainer.innerHTML = `
     <img class="w-full rounded-xl" src=${petData.image} alt="" />
     <h2 class="card-title">${petData.pet_name}</h2>
-    <p>Birth: ${petData.date_of_birth}</p>
-    <p>Gender: ${petData.gender}</p>
-    <p>Price : ${petData.price}</p>
-    <p>Breed: ${petData.breed}</p>
+    <p><i class="fa-solid fa-border-all"></i> Breed: ${petData.breed || "Normal Breed"}</p>
+    <p><i class="fa-regular fa-calendar"></i> Birth: ${petData.date_of_birth||"Unknown date"}</p>
+    <p><i class="fa-solid fa-mercury"></i>Gender: ${petData.gender || "Undefined"}</p>
+    <p><i class="fa-solid fa-dollar-sign"></i>Price : ${petData.price || "No Price available"}<span>$</span></p>
     <h1 class="card-title">Details Information</h1>
     <p>${petData.pet_details}</p>
     
@@ -81,10 +81,10 @@ const displayPost = (pets) => {
                 </figure>
                     <div class="card-body ">
                         <h2 class="card-title">${pet.pet_name}</h2>
-                        <p><i class="fa-solid fa-border-all"></i> Breed: ${pet.breed}</p>
-                        <p><i class="fa-regular fa-calendar"></i> Birth: ${pet.date_of_birth}</p>
-                        <p>Gender: ${pet.gender}</p>
-                        <p>Price : ${pet.price}</p>
+                        <p><i class="fa-solid fa-border-all"></i> Breed: ${pet.breed || "Normal Breed"}</p>
+                        <p><i class="fa-regular fa-calendar"></i> Birth: ${pet.date_of_birth||"Unknown date"}</p>
+                        <p><i class="fa-solid fa-mercury"></i>Gender: ${pet.gender || "Undefined"}</p>
+                        <p><i class="fa-solid fa-dollar-sign"></i>Price : ${pet.price || "No Price available"}<span>$</span></p>
                         <div class="card-actions justify-between">
                             <button class="btn" onclick="markAsImg('${pet.image}') "><i class="
                             fa-regular fa-thumbs-up">
