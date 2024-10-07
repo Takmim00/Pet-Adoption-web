@@ -14,3 +14,6 @@
   <p>3.Template literals</p>
   <p>4.Promise.All()</p>
   <p>5.const and let declaration</p>
+
+<h1>Live link to the deployed project.</h1>
+<p>Live link : https://adopt-web.netlify.app/</p>
