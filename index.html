@@ -23,7 +23,7 @@
       src="https://kit.fontawesome.com/7ac0e25b92.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <script>
       tailwind.config = {
         theme: {
@@ -43,7 +43,7 @@
     <!-- banner section start -->
     <header>
       <!-- navbar start  -->
-      <nav class="navbar w-11/12 mx-auto mt-4 ">
+      <nav class="navbar w-11/12 mx-auto mt-4">
         <div class="navbar-start gap-2">
           <img src="./images/logo.webp" alt="" />
           <a class="text-3xl font-black">Peddy</a>
@@ -108,7 +108,10 @@
             Your Path to Adoption Starts Here
           </h1>
           <p class="w-3/4 text-center">
-            Discover a variety of lovable pets waiting for their forever homes. Join us in making a difference by providing a safe, caring environment for these animals. Together, we can create lasting bonds and happy lives.
+            Discover a variety of lovable pets waiting for their forever homes.
+            Join us in making a difference by providing a safe, caring
+            environment for these animals. Together, we can create lasting bonds
+            and happy lives.
           </p>
           <a href="#adopt-container">
             <button class="btn bg-color text-white hover:text-black font-bold">
@@ -126,57 +129,73 @@
       <!-- Adopt Your BestFriend section start  -->
       <section id="adopt-container">
         <div
-          class="flex flex-col justify-center items-center  lg:pb-16 pb-8 space-y-8 mt-8"
+          class="flex flex-col justify-center items-center lg:pb-16 pb-8 space-y-8 mt-8"
         >
-          <h1 class="font-black text-5xl text-center">Adopt Your Best Friend</h1>
+          <h1 class="font-black text-5xl text-center">
+            Adopt Your Best Friend
+          </h1>
           <p class="w-3/4 text-center">
-            Discover a loving companion waiting for you at our shelter. Browse our wide selection of pets in need of a home and find the perfect furry friend to bring joy and companionship into your life.
+            Discover a loving companion waiting for you at our shelter. Browse
+            our wide selection of pets in need of a home and find the perfect
+            furry friend to bring joy and companionship into your life.
           </p>
         </div>
         <div
           id="category"
-          class="lg:flex  lg:flex-row  grid gap-3  justify-evenly items-center"
-        >
-      </div>
-      <!-- Adopt Your BestFriend section ends  -->
-    </section>
+          class="lg:flex lg:flex-row grid gap-3 justify-evenly items-center"
+        ></div>
+        <!-- Adopt Your BestFriend section ends  -->
+      </section>
 
-    <section class="mt-8">
-      <div class="flex justify-between">
-        <p class="text-2xl font-black">Best Deal For you</p>
-      <button id="sort-btn" class="btn bg-color text-white hover:text-black font-bold">
-        Sort by Price
-      </button>
-      </div>
-    </section>
-    
-    <section >
-      <div class="flex justify-center items-center">
-        <span id="spinner" class="loading loading-bars loading-lg hidden"></span>
-    </div>
-      <div class="flex lg:flex-row flex-col gap-4 my-12" >   
-      
-      <div id="pets-content" class="grid lg:grid-cols-12 grid-cols-1 gap-4 justify-center items-center">
+      <section class="mt-8">
+        <div class="flex justify-between">
+          <p class="text-2xl font-black">Best Deal For you</p>
+          <button
+            id="sort-btn"
+            class="btn bg-color text-white hover:text-black font-bold"
+          >
+            Sort by Price
+          </button>
         </div>
+      </section>
 
-        <div>
-          <div class="card bg-base-100 shadow-xl flex lg:flex-row flex-col">
-            <div id="markAsImg" class="grid grid-cols-2"></div>
+      <section>
+        <div class="flex justify-center items-center">
+          <span
+            id="spinner"
+            class="loading loading-bars loading-lg hidden"
+          ></span>
+        </div>
+        <div class="flex lg:flex-row flex-col gap-4 my-12">
+          <div
+            id="pets-content"
+            class="grid lg:grid-cols-12 grid-cols-1 gap-4 justify-center items-center"
+          ></div>
+
+          <div>
+            <div class="card bg-base-100 shadow-xl flex lg:flex-row flex-col">
+              <div id="markAsImg" class="grid grid-cols-2"></div>
+            </div>
           </div>
-          </div>
-      </div>
-    </section>
+        </div>
+      </section>
     </section>
     <!-- Modal -->
-    <button id="showModalData" class="btn hidden" onclick="customModal.showModal()">open modal</button>
+    <button
+      id="showModalData"
+      class="btn hidden"
+      onclick="customModal.showModal()"
+    >
+      open modal
+    </button>
     <dialog id="customModal" class="modal modal-bottom sm:modal-middle">
-      <div class="modal-box ">
+      <div class="modal-box">
         <div id="modal-content"></div>
         <form class="modal-action" method="dialog">
-
-            <!-- if there is a button in form, it will close the modal -->
-            <button class="btn w-full bg-[#0E7A811A] text-color font-extrabold">Cancel</button>
-
+          <!-- if there is a button in form, it will close the modal -->
+          <button class="btn w-full bg-[#0E7A811A] text-color font-extrabold">
+            Cancel
+          </button>
         </form>
       </div>
     </dialog>
@@ -191,7 +210,7 @@
         </div>
         <h3 class="font-extrabold text-3xl my-5">Congrates</h3>
         <p class="my-2">Adoption Process is start for your pat</p>
-        <span class=" font-mono text-6xl">
+        <span class="font-mono text-6xl">
           <span id="countdown"></span>
         </span>
       </form>
@@ -199,10 +218,11 @@
 
     <footer class="footer bg-black text-white justify-center lg:gap-60 py-12">
       <div>
-        <p class="flex items-center gap-3 mb-4"><img src="./images/logo.webp" alt="" />
+        <p class="flex items-center gap-3 mb-4">
+          <img src="./images/logo.webp" alt="" />
           <a class="text-3xl font-black">Peddy</a>
         </p>
-        <p class="text-gray-300">Location: av. Washington 165, NY CA </p>
+        <p class="text-gray-300">Location: av. Washington 165, NY CA</p>
         <p class="text-gray-300">54003</p>
         <p class="text-gray-300">Phone: +31 85 964 47 25</p>
         <p class="text-gray-300">Email: info@yourdomain.com</p>
@@ -223,8 +243,9 @@
             <input
               type="text"
               placeholder="Enter your email"
-              class="input input-bordered bg-[#FFFFFF0D] border-2 border-gray-400 join-item" />
-            <button class="btn  bg-[#0E7A81] border-none">Subscribe</button>
+              class="input input-bordered bg-[#FFFFFF0D] border-2 border-gray-400 join-item"
+            />
+            <button class="btn bg-[#0E7A81] border-none">Subscribe</button>
           </div>
         </fieldset>
       </form>
@@ -233,4 +254,3 @@
     <script src="./js/index.js"></script>
   </body>
 </html>
-
