@@ -1,3 +1,6 @@
+let allPetsData = [];
+let activeCategoryPets = [];
+
 const loadCategory = () => {
   fetch("https://openapi.programming-hero.com/api/peddy/categories")
     .then((res) => res.json())
@@ -45,8 +48,12 @@ const displayDetail = (petData) => {
 const loadPost = () => {
   fetch("https://openapi.programming-hero.com/api/peddy/pets")
     .then((res) => res.json())
-    .then((data) => displayPost(data.pets));
+    .then((data) => {
+      allPetsData = data.pets;
+      displayPost(allPetsData);
+    });
 };
+
 const displayPost = (pets) => {
   const petsContainer = document.getElementById("pets-content");
   petsContainer.innerHTML = "";
@@ -79,8 +86,8 @@ const displayPost = (pets) => {
                         <p>Gender: ${pet.gender}</p>
                         <p>Price : ${pet.price}</p>
                         <div class="card-actions justify-between">
-                            <button class="btn" onclick="markAsImg('${pet.image}') "><i class="fa-
-                            regular fa-thumbs-up">
+                            <button class="btn" onclick="markAsImg('${pet.image}') "><i class="
+                            fa-regular fa-thumbs-up">
                             </i></button>
                             <button onclick="startAdoption(this)" class="btn text-color font-
                             extrabold bg-color text-white
@@ -103,17 +110,40 @@ const removeActiveClass = () => {
   }
 };
 
+const loadAllPets = () => {
+  const spinner = document.getElementById("spinner");
+  spinner.classList.add("hidden");
+};
+
 const loadCategoryPets = (id) => {
   removeActiveClass();
-
   fetch(`https://openapi.programming-hero.com/api/peddy/category/${id}`)
     .then((res) => res.json())
     .then((data) => {
       const activeBtn = document.getElementById(`btn-${id}`);
       activeBtn.classList.add("active");
-      displayPost(data.data);
+      activeCategoryPets = data.data;
+      displayPost(activeCategoryPets);
     });
+  const spinner = document.getElementById("spinner");
+  spinner.classList.remove("hidden");
+  setTimeout(function () {
+    loadAllPets();
+  }, 3000);
 };
+
+const sortByPrice = (pets) => {
+  return pets.sort((a, b) => b.price - a.price);
+};
+document.getElementById("sort-btn").addEventListener("click", () => {
+  let sortedPets;
+  if (activeCategoryPets.length > 0) {
+    sortedPets = sortByPrice(activeCategoryPets);
+  } else {
+    sortedPets = sortByPrice(allPetsData);
+  }
+  displayPost(sortedPets);
+});
 
 const startAdoption = (button) => {
   const modal = document.getElementById("my_modal");

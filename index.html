@@ -138,12 +138,24 @@
         <div
           id="category"
           class="flex flex-col lg:flex-row justify-evenly items-center"
-        ></div>
+        >
+      </div>
       <!-- Adopt Your BestFriend section ends  -->
     </section>
-    <div class="flex lg:flex-row flex-col gap-4 my-12" >
+
+    <section class="mt-8">
+      <div class="flex justify-between">
+        <p class="text-2xl font-black">Best Deal For you</p>
+      <button id="sort-btn" class="btn bg-color text-white hover:text-black font-bold">
+        Sort by Price
+      </button>
+      </div>
+    </section>
+    <span id="spinner" class="loading loading-bars loading-lg hidden"></span>
+    <div class="flex lg:flex-row flex-col gap-4 my-12" >   
         <div id="pets-content" class="grid lg:grid-cols-12 grid-cols-1 gap-4">
         </div>
+
         <div>
           <div class="card bg-base-100 shadow-xl flex lg:flex-row flex-col">
             <div id="markAsImg" class="grid grid-cols-2"></div>
