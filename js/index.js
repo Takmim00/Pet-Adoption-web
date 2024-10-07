@@ -33,7 +33,7 @@ const displayDetail = (petData) => {
     <img class="w-full rounded-xl" src=${petData.image} alt="" />
     <h2 class="card-title">${petData.pet_name}</h2>
     <p><i class="fa-solid fa-border-all"></i> Breed: ${petData.breed || "Normal Breed"}</p>
-    <p><i class="fa-regular fa-calendar"></i> Birth: ${petData.date_of_birth||"Unknown date"}</p>
+    <p><i class="fa-regular fa-calendar"></i> Birth: ${petData.date_of_birth||"Undefined date"}</p>
     <p><i class="fa-solid fa-mercury"></i>Gender: ${petData.gender || "Undefined"}</p>
     <p><i class="fa-solid fa-dollar-sign"></i>Price : ${petData.price || "No Price available"}<span>$</span></p>
     <h1 class="card-title">Details Information</h1>
@@ -62,7 +62,8 @@ const displayPost = (pets) => {
     petsContainer.innerHTML = `
     <div class= "flex flex-col gap-5 justify-center items-center bg-[#13131308] lg:py-32 lg:px-80 py-8 rounded-xl w-full">
       <img src="./images/error.webp" class="flex " alt="" />
-      <h1 class="text-center text4xl font-bold">NO Content here in this category</h1>
+      <p class="text-center text-4xl font-black">No Information Available</p>
+      <p class="text-gray-400 text-center">It seems we don't have any data about birds in this category at the moment. Please check back later or explore other sections of the website for more information.</p>
     </div>
     `;
     return;
@@ -82,7 +83,7 @@ const displayPost = (pets) => {
                     <div class="card-body ">
                         <h2 class="card-title">${pet.pet_name}</h2>
                         <p><i class="fa-solid fa-border-all"></i> Breed: ${pet.breed || "Normal Breed"}</p>
-                        <p><i class="fa-regular fa-calendar"></i> Birth: ${pet.date_of_birth||"Unknown date"}</p>
+                        <p><i class="fa-regular fa-calendar"></i> Birth: ${pet.date_of_birth||"Undefined date"}</p>
                         <p><i class="fa-solid fa-mercury"></i>Gender: ${pet.gender || "Undefined"}</p>
                         <p><i class="fa-solid fa-dollar-sign"></i>Price : ${pet.price || "No Price available"}<span>$</span></p>
                         <div class="card-actions justify-between">
@@ -175,8 +176,8 @@ const markAsImg = (image) => {
   const div = document.createElement("div");
   div.classList = "";
   div.innerHTML = `
-    <div class="flex p-2 lg:p-3 bg-white rounded-2xl gap-3">
-            <figure class="px-2 py-2 h-[100px] relative shadow justify-center items-center">
+    <div class="flex p-2 lg:p-1 bg-white rounded-2xl gap-2">
+            <figure class="px-1 py-1 h-[100px] relative shadow justify-center items-center">
                     <img class="h-full w-full rounded-xl object-cover"
                         src=${image}
                         />
