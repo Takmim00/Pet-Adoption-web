@@ -12,7 +12,7 @@ const displayCategory = (categories) => {
   categories.forEach((item) => {
     const buttonContainer = document.createElement("div");
     buttonContainer.innerHTML = `
-      <button id="btn-${item.category}" onclick= "loadCategoryPets('${item.category}')" class= " category-btn flex items-center gap-2 font-bold text-2xl border-2 rounded-lg px-6 py-2"><img src=${item.category_icon}/>${item.category}</button>
+      <button id="btn-${item.category}" onclick= "loadCategoryPets('${item.category}')" class= " category-btn flex items-center gap-2 font-bold text-2xl border-2 rounded-full px-8 py-2"><img src=${item.category_icon}/>${item.category}</button>
       `;
     categoryContainer.append(buttonContainer);
   });
@@ -60,7 +60,7 @@ const displayPost = (pets) => {
   if (pets.length == 0) {
     petsContainer.classList.remove("grid");
     petsContainer.innerHTML = `
-    <div class= "flex flex-col gap-5 justify-center items-center bg-[#13131308] py-32 px-80 rounded-xl w-full">
+    <div class= "flex flex-col gap-5 justify-center items-center bg-[#13131308] lg:py-32 lg:px-80 py-8 rounded-xl w-full">
       <img src="./images/error.webp" class="flex " alt="" />
       <h1 class="text-center text4xl font-bold">NO Content here in this category</h1>
     </div>
