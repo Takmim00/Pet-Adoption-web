@@ -23,6 +23,7 @@
       src="https://kit.fontawesome.com/7ac0e25b92.js"
       crossorigin="anonymous"
     ></script>
+    <link rel="stylesheet" href="style.css">
     <script>
       tailwind.config = {
         theme: {
@@ -155,12 +156,12 @@
     <dialog id="customModal" class="modal modal-bottom sm:modal-middle">
       <div class="modal-box ">
         <div id="modal-content"></div>
-        <div class="modal-action">
-          <form method="dialog">
+        <form class="modal-action" method="dialog">
+
             <!-- if there is a button in form, it will close the modal -->
-            <button class="btn">Close</button>
-          </form>
-        </div>
+            <button class="btn w-full bg-[#0E7A811A] text-color font-extrabold">Cancel</button>
+
+        </form>
       </div>
     </dialog>
 
@@ -169,18 +170,14 @@
         method="dialog"
         class="modal-box px-5 py-10 flex flex-col justify-center items-center"
       >
-        <h3 class="font-extrabold text-3xl my-5">Congrates!</h3>
         <div class="text-center">
-          <img class="" src="./assets/coin.png" alt="" />
+          <img class="h-20 w-20" src="./images/handshake.png" alt="" />
         </div>
-        <p class="my-2">You Have Donated for Humankind</p>
-        <p class="font-bold text-xl">Successfully</p>
-        <button
-          id="btn-continue"
-          class="btn px-16 btn-md hover:bg-[#b4f461e0] transition-colors ease-in duration-300"
-        >
-          Close Confirmation
-        </button>
+        <h3 class="font-extrabold text-3xl my-5">Congrates</h3>
+        <p class="my-2">Adoption Process is start for your pat</p>
+        <span class=" font-mono text-6xl">
+          <span id="countdown"></span>
+        </span>
       </form>
     </dialog>
 
