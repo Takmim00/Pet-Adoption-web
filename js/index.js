@@ -60,7 +60,7 @@ const displayPost = (pets) => {
   if (pets.length == 0) {
     petsContainer.classList.remove("grid");
     petsContainer.innerHTML = `
-    <div class= "flex flex-col gap-5 justify-center items-center bg-[#13131308] lg:py-32 lg:px-80 py-8 rounded-xl w-full">
+    <div class= "flex flex-col gap-5 justify-center items-center bg-[#13131308] lg:py-32 lg:px-80 md:px-4 py-8 rounded-xl w-full">
       <img src="./images/error.webp" class="flex " alt="" />
       <p class="text-center text-4xl font-black">No Information Available</p>
       <p class="text-gray-400 text-center">It seems we don't have any data about birds in this category at the moment. Please check back later or explore other sections of the website for more information.</p>
@@ -72,7 +72,7 @@ const displayPost = (pets) => {
   }
   pets.forEach((pet) => {
     const petCard = document.createElement("div");
-    petCard.classList = "lg:col-span-4 col-span-12 gap-4";
+    petCard.classList = "lg:col-span-4 md:col-span-3 col-span-12 gap-4";
     petCard.innerHTML = `
         <div class="card bg-base-100 shadow-xl">
                 <figure class="px-6 pt-6 h-[200px] relative">
