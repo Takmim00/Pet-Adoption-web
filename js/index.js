@@ -32,12 +32,24 @@ const displayDetail = (petData) => {
   detailContainer.innerHTML = `
     <img class="w-full rounded-xl" src=${petData.image} alt="" />
     <h2 class="card-title">${petData.pet_name}</h2>
-    <p><i class="fa-solid fa-border-all"></i> Breed: ${petData.breed || "Normal Breed"}</p>
-    <p><i class="fa-regular fa-calendar"></i> Birth: ${petData.date_of_birth||"Undefined date"}</p>
-    <p><i class="fa-solid fa-mercury"></i>Gender: ${petData.gender || "Undefined"}</p>
-    <p><i class="fa-solid fa-dollar-sign"></i>Price : ${petData.price || "No Price available"}<span>$</span></p>
+    <div class="grid lg:grid-cols-2 md:grid-cols-2 space-y-2">
+    <p class="text-gray-600"><i class="fa-solid fa-border-all"></i> Breed: ${
+      petData.breed || "Normal Breed"
+    }</p>
+    <p class="text-gray-600"><i class="fa-regular fa-calendar"></i> Birth: ${
+      petData.date_of_birth || "Undefined date"
+    }</p>
+    <p class="text-gray-600"><i class="fa-solid fa-mercury"></i> Gender: ${
+      petData.gender || "Undefined"
+    }</p>
+    <p class="text-gray-600"><i class="fa-solid fa-dollar-sign"></i> Price : ${
+      petData.price || "No Price available"
+    }<span>$</span></p>
+    <p class="text-gray-600"><i class="fa-solid fa-mercury"></i> Vaccinated status: ${petData.vaccinated_status || "Undefined"}</p>
+    </div>
+    <hr/>
     <h1 class="card-title">Details Information</h1>
-    <p>${petData.pet_details}</p>
+    <p class="text-gray-600">${petData.pet_details}</p>
     
   `;
   document.getElementById("customModal").showModal();
@@ -81,19 +93,30 @@ const displayPost = (pets) => {
                         />
                 </figure>
                     <div class="card-body ">
-                        <h2 class="card-title">${pet.pet_name}</h2>
-                        <p><i class="fa-solid fa-border-all"></i> Breed: ${pet.breed || "Normal Breed"}</p>
-                        <p><i class="fa-regular fa-calendar"></i> Birth: ${pet.date_of_birth||"Undefined date"}</p>
-                        <p><i class="fa-solid fa-mercury"></i>Gender: ${pet.gender || "Undefined"}</p>
-                        <p><i class="fa-solid fa-dollar-sign"></i>Price : ${pet.price || "No Price available"}<span>$</span></p>
+                        <h2 class="font-bold text-2xl">${pet.pet_name}</h2>
+                        <p class="text-gray-600"><i class="fa-solid fa-border-all"></i> Breed: ${
+                          pet.breed || "Normal Breed"
+                        }</p>
+                        <p class="text-gray-600"><i class="fa-regular fa-calendar"></i> Birth: ${
+                          pet.date_of_birth || "Undefined date"
+                        }</p>
+                        <p class="text-gray-600"><i class="fa-solid fa-mercury"></i> Gender: ${
+                          pet.gender || "Undefined"
+                        }</p>
+                        <p class="text-gray-600"><i class="fa-solid fa-dollar-sign"></i> Price : ${
+                          pet.price || "No Price available"
+                        }<span>$</span></p>
                         <div class="card-actions justify-between">
-                            <button class="btn" onclick="markAsImg('${pet.image}') "><i class="
+                            <button class="btn" onclick="markAsImg('${
+                              pet.image
+                            }') "><i class="
                             fa-regular fa-thumbs-up">
                             </i></button>
-                            <button onclick="startAdoption(this)" class="btn text-color font-
-                            extrabold bg-color text-white
+                            <button onclick="adoption(this)" class="btn text-color font-extrabold bg-color text-white hover:text-color
                             ">Adopt</button>
-                            <button onclick="loadDetail(${pet.petId})" class="btn  font-extrabold 
+                            <button onclick="loadDetail(${
+                              pet.petId
+                            })" class="btn  font-extrabold hover:text-color
                             bg-color text-white
                             ">Details</button>
                         </div>
@@ -111,8 +134,6 @@ const removeActiveClass = () => {
   }
 };
 
-
-
 const loadCategoryPets = (id) => {
   removeActiveClass();
 
@@ -124,7 +145,9 @@ const loadCategoryPets = (id) => {
   const timeout = new Promise((resolve) => {
     setTimeout(resolve, 2000);
   });
-  const fetches= fetch(`https://openapi.programming-hero.com/api/peddy/category/${id}`)
+  const fetches = fetch(
+    `https://openapi.programming-hero.com/api/peddy/category/${id}`
+  )
     .then((res) => res.json())
     .then((data) => {
       const activeBtn = document.getElementById(`btn-${id}`);
@@ -135,9 +158,8 @@ const loadCategoryPets = (id) => {
     spinner.classList.add("hidden");
     petsContainer.classList.remove("hidden");
     displayPost(activeCategoryPets);
-  });   
+  });
 };
-
 
 const sortByPrice = (pets) => {
   return pets.sort((a, b) => b.price - a.price);
@@ -152,7 +174,7 @@ document.getElementById("sort-btn").addEventListener("click", () => {
   displayPost(sortedPets);
 });
 
-const startAdoption = (button) => {
+const adoption = (button) => {
   const modal = document.getElementById("my_modal");
   const countdownElement = document.getElementById("countdown");
   modal.showModal();
