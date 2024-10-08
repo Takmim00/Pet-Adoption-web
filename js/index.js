@@ -45,7 +45,9 @@ const displayDetail = (petData) => {
     <p class="text-gray-600"><i class="fa-solid fa-dollar-sign"></i> Price : ${
       petData.price || "No Price available"
     }<span>$</span></p>
-    <p class="text-gray-600"><i class="fa-solid fa-mercury"></i> Vaccinated status: ${petData.vaccinated_status || "Undefined"}</p>
+    <p class="text-gray-600"><i class="fa-solid fa-mercury"></i> Vaccinated status: ${
+      petData.vaccinated_status || "Undefined"
+    }</p>
     </div>
     <hr/>
     <h1 class="card-title">Details Information</h1>
@@ -72,7 +74,7 @@ const displayPost = (pets) => {
   if (pets.length == 0) {
     petsContainer.classList.remove("grid");
     petsContainer.innerHTML = `
-    <div class= "flex flex-col gap-5 justify-center items-center bg-[#13131308] lg:py-32 lg:px-80 md:px-4 py-8 rounded-xl w-full">
+    <div class= "flex flex-col gap-5 justify-center items-center bg-[#13131308] lg:py-32 lg:px-52 md:px-4 py-8 rounded-xl w-full">
       <img src="./images/error.webp" class="flex " alt="" />
       <p class="text-center text-4xl font-black">No Information Available</p>
       <p class="text-gray-400 text-center">It seems we don't have any data about birds in this category at the moment. Please check back later or explore other sections of the website for more information.</p>
